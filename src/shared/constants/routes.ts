@@ -10,7 +10,7 @@ export const SPECIFIC_CHANNEL_VIEW_ROUTE = (channelId: Uuid) => `${CHANNEL_VIEW_
 export const LOGIN_ROUTE = '/';
 
 
-export const SERVER_ROUTE = process.env.BACKEND_URL;
+export const SERVER_ROUTE = process.env['BACKEND_URL'];
 export const BEARER_ROUTE = `${SERVER_ROUTE}auth/`;
 export const CHANNELS_ROUTE = `app/${appId}/channel/`;
 export const MESSAGES_ROUTE = 'message/';
