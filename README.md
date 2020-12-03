@@ -1,2 +1,3 @@
-# PV247
+# Devops-workshop-client
 
+Messaging client app for DevOps workshop.
