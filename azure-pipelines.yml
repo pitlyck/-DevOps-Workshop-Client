@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
 
 steps:
 - task: NodeTool@0
@@ -20,8 +20,3 @@ steps:
     npm run production
   displayName: 'npm install and build'
 
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    customCommand: 'run test'
-  displayName: Run tests
