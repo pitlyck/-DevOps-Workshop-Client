@@ -8,7 +8,7 @@ import {
 } from '../channelActionCreators';
 import {
   CHANNELS_ROUTE,
-  SERVER_ROUTE,
+  getBackendUrl,
   SPECIFIC_CHANNEL_VIEW_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -31,7 +31,7 @@ const deleteMessageFactoryDependencies = {
   deleteBegin: deleteChannel,
   success: succeedToDeleteChannel,
   error: failToDeleteChannel,
-  delete: (channelId: Uuid) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}${channelId}`, {
+  delete: (channelId: Uuid) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}${channelId}`, {
     method: 'DELETE',
     headers: {
       accept: 'application/json',

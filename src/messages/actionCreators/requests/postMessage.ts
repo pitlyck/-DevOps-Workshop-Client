@@ -10,7 +10,7 @@ import {
 import {
   CHANNELS_ROUTE,
   MESSAGES_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import {
@@ -26,7 +26,7 @@ const postMessageFactoryDependencies = {
   postBegin: createMessage,
   success: succeedToPostMessage,
   error: failToPostMessage,
-  post: (body: Partial<IMessageData>, channelId: Uuid) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}`, {
+  post: (body: Partial<IMessageData>, channelId: Uuid) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}`, {
     method: 'POST',
     body: JSON.stringify(convertViewToServerMessageModel(body)),
     headers: {

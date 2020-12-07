@@ -12,7 +12,7 @@ import {
 
 import {
   CHANNELS_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import { ICreateChannelDependencies } from '../createChannelFactory';
@@ -44,7 +44,7 @@ const postChannelFactoryDependencies = {
   postBegin: createChannel,
   success: succeedToPostChannel,
   error: failToPostChannel,
-  post: (body: Partial<IChannelData>) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}`, {
+  post: (body: Partial<IChannelData>) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}`, {
     method: 'POST',
     body: JSON.stringify(convertViewToServerChannelModel(body)),
     headers: {

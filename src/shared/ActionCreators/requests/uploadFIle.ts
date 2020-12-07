@@ -10,7 +10,7 @@ import {
 } from '../fileActionCreators';
 import {
   FILE_ROUTE,
-  SERVER_ROUTE,
+  getBackendUrl,
   DOWNLOAD_LINK_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -36,7 +36,7 @@ const uploadFileFactoryDependencies: IUploadFileFactoryDependencies = {
   postBegin: uploadFile,
   success: succeedToUploadFIle,
   error: failToUploadFile,
-  post: (data: FormData) => fetch(`${SERVER_ROUTE}${FILE_ROUTE}`, {
+  post: (data: FormData) => fetch(`${getBackendUrl()}${FILE_ROUTE}`, {
     method: 'POST',
     headers: {
       accept: 'text/plain',
@@ -49,7 +49,7 @@ const uploadFileFactoryDependencies: IUploadFileFactoryDependencies = {
   getLinkBegin: requestFileDonwloadLink,
   getLinkSuccess: succeedToFetchDownloadLink,
   getLinkError: failToFetchDownloadLink,
-  getLink: (id: Uuid) => fetch(`${SERVER_ROUTE}${FILE_ROUTE}${id}${DOWNLOAD_LINK_ROUTE}`, {
+  getLink: (id: Uuid) => fetch(`${getBackendUrl()}${FILE_ROUTE}${id}${DOWNLOAD_LINK_ROUTE}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

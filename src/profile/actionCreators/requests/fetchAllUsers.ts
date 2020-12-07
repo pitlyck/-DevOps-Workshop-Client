@@ -8,7 +8,7 @@ import {
   succeedToFetchAllUsers
 } from '../usersActionCreators';
 import {
-  SERVER_ROUTE,
+  getBackendUrl,
   USERS_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -23,7 +23,7 @@ const fetchAllUsersFactoryDependencies = {
   fetchBegin: requestAllUsers,
   success: succeedToFetchAllUsers,
   error: failToFetchAllUsers,
-  fetch: () => fetch(`${SERVER_ROUTE}${USERS_ROUTE}`, {
+  fetch: () => fetch(`${getBackendUrl()}${USERS_ROUTE}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

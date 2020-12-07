@@ -1,1 +1,1 @@
-export const appId = process.env.REACT_APP_APP_ID; // '4a27020d-284b-462d-81eb-0773112e77a5';
+export const appId = '293631b3-8589-4e00-a47d-949fb897113f';

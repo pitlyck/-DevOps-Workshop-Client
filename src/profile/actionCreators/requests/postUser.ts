@@ -7,7 +7,7 @@ import {
   succeedToPostUser
 } from '../usersActionCreators';
 import {
-  SERVER_ROUTE,
+  getBackendUrl,
   USERS_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -23,7 +23,7 @@ const postUserFactoryDependencies = {
   postBegin: createUser,
   success: succeedToPostUser,
   error: failToPostUser,
-  post: (body: Partial<IUserData>) => fetch(`${SERVER_ROUTE}${USERS_ROUTE}`, {
+  post: (body: Partial<IUserData>) => fetch(`${getBackendUrl()}${USERS_ROUTE}`, {
     method: 'POST',
     body: JSON.stringify(convertViewToServerUserModel(body)),
     headers: {

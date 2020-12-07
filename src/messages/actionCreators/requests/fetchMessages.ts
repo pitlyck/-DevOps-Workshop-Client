@@ -10,7 +10,7 @@ import {
 import {
   CHANNELS_ROUTE,
   MESSAGES_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import { getBearer } from '../../../shared/utils/getBearer';
@@ -20,7 +20,7 @@ const fetchMessagesFactoryDependencies = (fake: boolean) => ({
   fetchBegin: fake ? fakeReceiveMessages : requestMessages,
   success: succeedToFetchMessages,
   error: failToFetchMessages,
-  fetch: (channelId: Uuid) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}`, {
+  fetch: (channelId: Uuid) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

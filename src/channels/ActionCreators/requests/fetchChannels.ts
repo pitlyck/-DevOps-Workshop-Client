@@ -8,7 +8,7 @@ import {
 
 import {
   CHANNELS_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import { getBearer } from '../../../shared/utils/getBearer';
@@ -20,7 +20,7 @@ const fetchChannelsFactoryDependencies = {
   fetchBegin: requestChannels,
   success: succeedToFetchChannels,
   error: failToFetchChannels,
-  fetch: () => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}`, {
+  fetch: () => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

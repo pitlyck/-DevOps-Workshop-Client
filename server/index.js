@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('../webpack.config.js');
+const port = process.env.PORT || 3000;
 
 const main = async () => {
   const app = express();
@@ -17,13 +18,15 @@ const main = async () => {
   await applyHotModuleReplacement(app);
 
   app.get('/env/backendurl', (req, res) => {
-    const url = "tramtadadaaaa";//process.env.BACKEND_URL
+    const url = process.env.BACKEND_URL; //"https://kentico-workshop-backend-michalp.azurewebsites.net/api/v2/";
+    if(!url.endsWith('/')) url = url + '/';
+
     res.setHeader('Content-Type', 'text/plain');
     res.send(url);
   });
 
-  app.listen(3000, () =>
-    console.log('Express server is running on localhost:3000')
+  app.listen(port, () =>
+    console.log('Express server is running on port' + port)
   );
 };
 

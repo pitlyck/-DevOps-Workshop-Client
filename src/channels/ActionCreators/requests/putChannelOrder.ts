@@ -6,7 +6,7 @@ import {
   failToReorderChannels
 } from '../channelActionCreators';
 import {
-  SERVER_ROUTE,
+  getBackendUrl,
   APP_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -22,7 +22,7 @@ interface IPutAppFactoryDependencies {
   readonly update: (body: Immutable.OrderedSet<Uuid>) => Promise<Response>;
 }
 
-export const updateOrderFetch = (channelIds: Immutable.OrderedSet<Uuid>) => fetch(`${SERVER_ROUTE}${APP_ROUTE}`, {
+export const updateOrderFetch = (channelIds: Immutable.OrderedSet<Uuid>) => fetch(`${getBackendUrl()}${APP_ROUTE}`, {
   method: 'PUT',
   body: JSON.stringify({
     customData: {

@@ -9,7 +9,7 @@ import {
 import {
   CHANNELS_ROUTE,
   MESSAGES_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import {
@@ -40,7 +40,7 @@ const updateMessageFactoryDependencies = (specificPreferenceDeps: ISpecificPrefe
   success: succeedToUpdateMessage,
   error: failToUpdateMessage,
   updatePopularity: specificPreferenceDeps.updatePopularity,
-  update: (body: Partial<IMessageData>, channelId: Uuid) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}/${body.id}`, {
+  update: (body: Partial<IMessageData>, channelId: Uuid) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}/${body.id}`, {
     method: 'PUT',
     body: JSON.stringify(convertViewToServerMessageModel(body)),
     headers: {

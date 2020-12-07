@@ -7,7 +7,7 @@ import {
 } from '../channelActionCreators';
 import {
   CHANNELS_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import { IChannelData } from '../../models/Channel';
@@ -27,7 +27,7 @@ export const updateChannelFactoryDependencies = {
   updateBegin: updateChannel,
   success: succeedToUpdateChannel,
   error: failToUpdateChannel,
-  update: (channel: Partial<IChannelData>) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}/${channel.id}`, {
+  update: (channel: Partial<IChannelData>) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}/${channel.id}`, {
     method: 'PUT',
     body: JSON.stringify(convertViewToServerChannelModel(channel)),
     headers: {

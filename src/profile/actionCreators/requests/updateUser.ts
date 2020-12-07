@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import * as fetch from 'isomorphic-fetch';
 import {
-  SERVER_ROUTE,
+  getBackendUrl,
   USERS_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -35,7 +35,7 @@ const updateUserFactoryDependencies = {
   updateUsernameBegin: saveChangesToUsername,
   success: succeedToUpdateUser,
   error: failToUpdateUser,
-  update: (body: Partial<IUserData>) => fetch(`${SERVER_ROUTE}${USERS_ROUTE}${body.email}`, {
+  update: (body: Partial<IUserData>) => fetch(`${(getBackendUrl())}${USERS_ROUTE}${body.email}`, {
     method: 'PUT',
     body: JSON.stringify(convertViewToServerUserModel(body)),
     headers: {

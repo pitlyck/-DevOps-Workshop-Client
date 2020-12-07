@@ -8,7 +8,7 @@ import {
 import { history } from '../../../shared/components/AppWrapper';
 
 import {
-  SERVER_ROUTE,
+  getBackendUrl,
   APP_ROUTE,
   SPECIFIC_CHANNEL_VIEW_ROUTE
 } from '../../../shared/constants/routes';
@@ -28,7 +28,7 @@ const fetchChannelsFactoryDependencies = {
   fetchBegin: requestChannelOrder,
   success: succeedToFetchChannelOrder,
   error: failToFetchChannelOrder,
-  fetch: () => fetch(`${SERVER_ROUTE}${APP_ROUTE}`, {
+  fetch: () => fetch(`${getBackendUrl()}${APP_ROUTE}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

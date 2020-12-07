@@ -1,8 +1,8 @@
 import * as fetch from 'isomorphic-fetch';
 import * as uuid from 'uuid';
 import {
-  BEARER_ROUTE,
-  SERVER_ROUTE,
+  getBearerRoute,
+  getBackendUrl,
   USERS_ROUTE
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
@@ -18,7 +18,7 @@ const createBearerFactoryDependencies = {
   postBegin: requestBearer,
   success: succeedToCreateBearer,
   error: failToCreateBearer,
-  postLogin: (email: string) => fetch(BEARER_ROUTE, {
+  postLogin: (email: string) => fetch(getBearerRoute(), {
     method: 'POST',
     body: JSON.stringify({ email }),
     headers: {
@@ -27,7 +27,7 @@ const createBearerFactoryDependencies = {
     },
   })
     .then(response => checkStatus(response)),
-  fetchUser: (email: string) => fetch(`${SERVER_ROUTE}${USERS_ROUTE}${email}`, {
+  fetchUser: (email: string) => fetch(`${(getBackendUrl())}${USERS_ROUTE}${email}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

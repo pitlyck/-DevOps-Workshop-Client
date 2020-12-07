@@ -8,7 +8,7 @@ import {
 import {
   CHANNELS_ROUTE,
   MESSAGES_ROUTE,
-  SERVER_ROUTE
+  getBackendUrl
 } from '../../../shared/constants/routes';
 import { checkStatus } from '../../../shared/utils/checkStatus';
 import { getBearer } from '../../../shared/utils/getBearer';
@@ -18,7 +18,7 @@ const deleteMessageFactoryDependencies = {
   deleteBegin: deleteMessage,
   success: succeedToDeleteMessage,
   error: failToDeleteMessage,
-  delete: (channelId: Uuid, messageId: Uuid) => fetch(`${SERVER_ROUTE}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}/${messageId}`, {
+  delete: (channelId: Uuid, messageId: Uuid) => fetch(`${getBackendUrl()}${CHANNELS_ROUTE}${channelId}/${MESSAGES_ROUTE}/${messageId}`, {
     method: 'DELETE',
     headers: {
       accept: 'application/json',
