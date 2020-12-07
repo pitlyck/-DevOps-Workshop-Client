@@ -10,7 +10,16 @@ export const SPECIFIC_CHANNEL_VIEW_ROUTE = (channelId: Uuid) => `${CHANNEL_VIEW_
 export const LOGIN_ROUTE = '/';
 
 
-export const SERVER_ROUTE = process.env.REACT_APP_BACKEND_URL;
+// export const SERVER_ROUTE = async () => {
+//    const response = await fetch('/env/backendurl');
+//    return response.text();
+//  };
+export const SERVER_ROUTE = process.env.REACT_APP_BACKEND_URL; // await fetch('/env/backendurl').then(response => response.text()).catch(err => console.log(err));
+
+
+
+// await fetch('/api/hello')
+// process.env.REACT_APP_BACKEND_URL;
 export const BEARER_ROUTE = `${SERVER_ROUTE}auth/`;
 export const CHANNELS_ROUTE = `app/${appId}/channel/`;
 export const MESSAGES_ROUTE = 'message/';
