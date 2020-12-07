@@ -4,17 +4,21 @@
   "main": "src/index.jsx",
   "scripts": {
     "build": "webpack --mode=development",
-    "start": "webpack-dev-server --mode=development",
+    "start": "node server/index.js",
+    "start-dev": "webpack-dev-server --mode=development",
     "production": "webpack -p",
-    "test": "jest --config=jest.config.js --no-cache"
+    "test": "jest --config=jest.config.js --no-cache",
+    "eslint": "eslint --fix ."
   },
   "dependencies": {
     "@types/mousetrap": "^1.6.0",
     "bootstrap": "^3.3.7",
+    "express-pino-logger": "^5.0.0",
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
     "memoizee": "^0.4.14",
     "mousetrap": "^1.6.2",
+    "open": "^7.3.0",
     "react": "^16.4.1",
     "react-beautiful-dnd": "^10.0.2",
     "react-bootstrap": "^0.32.4",
@@ -23,7 +27,8 @@
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.3.1",
     "redux-thunk": "^2.3.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "@types/draft-js": "^0.10.25",
